@@ -1,0 +1,26 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for Z22IT023_C_SALESHD //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Resume;
+  use action Prepare;
+  use action Activate;
+  use action Discard;
+
+  use association _Salesitem { create; with draft; }
+}
+
+define behavior for Z22IT023_C_SALESITM //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Salesheader { with draft; }
+}
